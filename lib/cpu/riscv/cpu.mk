@@ -4,7 +4,8 @@ ASFLAGS +=\
 	$(CPPFLAGS) \
 	-DRISCV \
 	-D__ASSEMBLY__ \
-	-march=rv64imafdcvxthead -mstrict-align \
+	-mcpu=thead-c906 \
+	-march=rv64imafdc_xtheadsync_xtheadcmo -mstrict-align \
 	-mcmodel=medany \
 	-mabi=lp64d \
 	-ffreestanding  \
@@ -13,7 +14,8 @@ ASFLAGS +=\
 TF_CFLAGS += \
 	$(CPPFLAGS) \
 	-DRISCV \
-	-march=rv64imafdcvxthead \
+	-mcpu=thead-c906 \
+	-march=rv64imafdc_xtheadsync_xtheadcmo -mstrict-align \
 	-mcmodel=medany \
 	-mabi=lp64d \
 	-ffreestanding -fno-builtin -Wall -std=gnu99 \
@@ -23,6 +25,7 @@ TF_CFLAGS += \
 TF_LDFLAGS += \
 	--fatal-warnings -Os \
 	--gc-sections \
+	--no-error-rwx-segments --no-warn-rwx-segments \
 	${TF_LDFLAGS_aarch64}
 
 CPU_INCLUDES := \
