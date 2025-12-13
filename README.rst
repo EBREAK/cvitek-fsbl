@@ -10,3 +10,11 @@ BUILD
 cv180x:
 
 make CHIP_ARCH=cv180x DDR_CFG=ddr_auto_x16 BOOT_CPU=riscv CROSS_COMPILE=riscv64-linux-gnu- MONITOR_PATH='c906m.bin' BLCP_2ND_PATH='c906l.bin'
+
+
+DEVELOP
+====
+
+generate compile_commands.json:
+
+bear -- make xxxxxxxxxxxxx

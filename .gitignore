@@ -22,3 +22,8 @@ GTAGS
 tags
 #ignore vim swap files
 *.swo
+
+#lsp clangd files
+.cache/
+compile_commands.json
+
