@@ -18,3 +18,8 @@ DEVELOP
 generate compile_commands.json:
 
 bear -- make xxxxxxxxxxxxx
+
+NO MORE UPDATE
+====
+
+I have some kermit loader code not upload to github, because my milkv duo is dead, I can't test it, now this project is readonly.
