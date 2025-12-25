@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <delay_timer.h>
 #include "platform_def.h"
 
 #define thr rbr
@@ -47,12 +48,22 @@ struct dw_regs {
 
 static struct dw_regs *uart = (struct dw_regs *)PLAT_BOOT_UART_BASE;
 
+void console_flush(void);
+
 void console_init(uintptr_t not_used, unsigned int uart_clk, unsigned int baud_rate)
 {
 	int baudrate = baud_rate;
 	int uart_clock = uart_clk;
 
+	console_flush();
+	mdelay(3);
+
 	int divisor = uart_clock / (16 * baudrate);
+	switch (baudrate) {
+	case 115200:
+	  divisor = 14;
+	  break;
+	}
 
 	uart->lcr = uart->lcr | UART_LCR_DLAB | UART_LCR_8N1;
 	asm (""::: "memory");

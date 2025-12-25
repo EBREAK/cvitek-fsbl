@@ -52,6 +52,7 @@ void bl2_main(void)
 {
 	ATF_STATE = ATF_STATE_BL2_MAIN;
 	time_records->fsbl_start = read_time_ms();
+	console_init(0, PLAT_UART_CLK_IN_HZ, 115200);
 
 	NOTICE("\nFSBL %s:%s\n", version_string, build_message);
 
